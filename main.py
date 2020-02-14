@@ -2,6 +2,8 @@ from sklearn import datasets
 from sklearn.neighbors import KNeighborsClassifier
 import matplotlib.pyplot as plt
 import pandas as pd
+from sklearn.model_selection import cross_val_score
+import numpy as np
 
 iris = datasets.load_iris()
 # Load iris dataset
@@ -22,10 +24,23 @@ plt.figure(1)
 plt.scatter(sepal_length, sepal_width, c=y, cmap=plt.cm.Set1)
 plt.xlabel('sepal length (cm)')
 plt.ylabel('sepal width (cm)')
-plt.show()
+# plt.show()
 
 plt.figure(2)
 plt.scatter(petal_length, petal_width, c=y, cmap=plt.cm.Set1)
 plt.xlabel('petal length (cm)')
 plt.ylabel('petal width (cm)')
-plt.show()
+# plt.show()
+
+model = KNeighborsClassifier(n_neighbors=3)
+# Initialize K-nearest neighbors model with hyperparameter of 3 nearest neighbors
+features = iris_df[['petal length (cm)', 'petal width (cm)']]
+# Set petal length and petal width as features for the model due to distinct separations for these variables in visualizations
+
+model.fit(features, y)
+# Fit the model
+cross_val_scores = cross_val_score(model, features, y, cv=10)
+# Calculate 10-fold cross validation scores
+print(cross_val_scores)
+# Print array of scores from a 10-fold cross validation
+print(np.mean(cross_val_scores))
