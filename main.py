@@ -1,9 +1,9 @@
-from sklearn import datasets
-from sklearn.neighbors import KNeighborsClassifier
 import matplotlib.pyplot as plt
-import pandas as pd
-from sklearn.model_selection import cross_val_score
 import numpy as np
+import pandas as pd
+from sklearn import datasets
+from sklearn.model_selection import cross_val_score
+from sklearn.neighbors import KNeighborsClassifier
 
 iris = datasets.load_iris()
 # Load iris dataset
@@ -32,7 +32,7 @@ plt.xlabel('petal length (cm)')
 plt.ylabel('petal width (cm)')
 # plt.show()
 
-model = KNeighborsClassifier(n_neighbors=3)
+model = KNeighborsClassifier(n_neighbors=1)
 # Initialize K-nearest neighbors model with hyperparameter of 3 nearest neighbors
 features = iris_df[['petal length (cm)', 'petal width (cm)']]
 # Set petal length and petal width as features for the model due to distinct separations for these variables in visualizations
