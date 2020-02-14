@@ -36,11 +36,13 @@ plt.ylabel('petal width (cm)')
 # Initialize K-nearest neighbors model with hyperparameter of 3 nearest neighbors
 # features = iris_df[['petal length (cm)', 'petal width (cm)']]
 # Set petal length and petal width as features for the model due to distinct separations for these variables in visualizations
-# Mean cross validation score = .974
+# Mean cross validation score = .973
 
 model = GaussianNB()
 # Initialize Gaussian Naive Bayes model
-features = iris_df[['petal length (cm)', 'petal width (cm)', 'sepal length (cm)', 'sepal width (cm)']]
+# features = iris_df[['petal length (cm)', 'petal width (cm)', 'sepal length (cm)', 'sepal width (cm)']]
+# Mean cross validation score = .953
+features = iris_df[['petal length (cm)', 'petal width (cm)']]
 
 model.fit(features, y)
 # Fit the model
