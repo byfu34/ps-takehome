@@ -1,3 +1,5 @@
+import pickle
+
 import numpy as np
 import pandas as pd
 from sklearn import datasets
@@ -21,6 +23,8 @@ features = iris_df[['petal length (cm)', 'petal width (cm)']]
 
 model.fit(features, y)
 # Fit the model
+pickle.dump(model, open('api/model.pickle', 'wb'))
+# Serialize the model
 cross_val_scores = cross_val_score(model, features, y, cv=10)
 # Calculate 10-fold cross validation scores
 print(cross_val_scores)
