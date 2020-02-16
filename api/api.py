@@ -20,7 +20,7 @@ def post_feature():
 
     prediction = model.predict(X)
 
-    return np.array2string(prediction)
+    return np.array2string(prediction[0])
 
 if __name__ == '__main__':
     model = pickle.load(open('model.pickle', 'rb'))
